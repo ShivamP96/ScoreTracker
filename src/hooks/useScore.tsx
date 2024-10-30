@@ -22,7 +22,3 @@ export const useScoreStore = create<GameScore>((set) => ({
     set((state) => ({ teamBScore: state.teamBScore - amount })),
   resetPoints: () => set({ teamAScore: 0, teamBScore: 0 }),
 }));
-
-/*addPoint: (team: string, amount: number) =>
-    set((state) => ({`${team}: ${state}.${team} + ${amount}` })),
-  */
