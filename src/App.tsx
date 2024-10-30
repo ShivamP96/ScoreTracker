@@ -7,17 +7,19 @@ function App() {
   const resetPoints = useScoreStore((state) => state.resetPoints);
   return (
     <>
-      <h1>Score Tracker</h1>
-      <div>
+      <h1 className="text-3xl font-bold underline border-solid border-2 border-blue-500">
+        Score Tracker
+      </h1>
+      <div className="border-solid border-2 border-red-500">
         <button type="submit" onClick={() => resetPoints()}>
           {" "}
           Click Here to Reset
         </button>
       </div>
-      <div>
+      <div className="md:container md:mx-auto border-solid border-2 border-sky-500">
         <TeamACard />
       </div>
-      <div>
+      <div className="border-solid border-2">
         <TeamBCard />
       </div>
     </>
