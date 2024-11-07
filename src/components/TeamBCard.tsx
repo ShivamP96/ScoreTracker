@@ -7,7 +7,7 @@ export default function TeamBCard() {
 
   return (
     <section>
-      <div> Team B Card </div>
+      <div> Team B</div>
       <div> {teamBScore} </div>
       <div>
         <button type="button" onClick={() => addPointTeamB(1)}>
