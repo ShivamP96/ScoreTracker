@@ -1,3 +1,6 @@
+import { useState } from "react";
+import TitleState from "./TitleState";
+
 export default function TeamACard({
   title,
   teamScore,
@@ -9,10 +12,12 @@ export default function TeamACard({
   addPoint: (amount: number) => void;
   subtractPoint: (amount: number) => void;
 }) {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   return (
     <section className="flex flex-col justify-start items-center">
-      <div id="teamCardName" className="font-bold text-4xl p-8">
-        {title}
+      <div className="flex flex-row gap-2">
+        <TitleState title={title} isEditing={isEditing} />
+        <button type="button" onClick={() => setIsEditing(true)}></button>
       </div>
       <div className="flex flex-row gap-5">
         <div>
