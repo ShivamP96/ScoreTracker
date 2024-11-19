@@ -6,12 +6,14 @@ function App() {
   const resetPoints = useScoreStore((state) => state.resetPoints);
   const teamAScore = useScoreStore((state) => state.teamAScore);
   const teamAName = useScoreStore((state) => state.teamAName);
+  const teamBName = useScoreStore((state) => state.teamBName);
   const addPointTeamA = useScoreStore((state) => state.addPointTeamA);
   const subtractPointTeamA = useScoreStore((state) => state.subtractPointTeamA);
   const teamBScore = useScoreStore((state) => state.teamBScore);
   const addPointTeamB = useScoreStore((state) => state.addPointTeamB);
   const subtractPointTeamB = useScoreStore((state) => state.subtractPointTeamB);
   const renameTeamA = useScoreStore((state) => state.renameTeamA);
+  const renameTeamB = useScoreStore((state) => state.renameTeamB);
 
   return (
     <>
@@ -43,10 +45,11 @@ function App() {
             </div>
             <div>
               <TeamCard
-                title={"Team B"}
+                title={teamBName}
                 teamScore={teamBScore}
                 addPoint={addPointTeamB}
                 subtractPoint={subtractPointTeamB}
+                renameTeam={renameTeamB}
               />
             </div>
           </div>

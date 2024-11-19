@@ -1,4 +1,3 @@
-import { useState } from "react";
 import TitleState from "./TitleState";
 
 export default function TeamACard({
@@ -14,16 +13,10 @@ export default function TeamACard({
   subtractPoint: (amount: number) => void;
   renameTeam: (renameValue: string) => void;
 }) {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
   return (
     <section className="flex flex-col justify-start items-center">
       <div className="flex flex-row gap-2">
-        <TitleState
-          title={title}
-          isEditing={isEditing}
-          renameTeam={renameTeam}
-        />
-        <button type="button" onClick={() => setIsEditing(true)}></button>
+        <TitleState title={title} renameTeam={renameTeam} />
       </div>
       <div className="flex flex-row gap-5">
         <div>

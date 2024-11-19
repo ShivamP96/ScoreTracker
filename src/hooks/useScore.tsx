@@ -12,6 +12,10 @@ type GameScore = {
   subtractPointTeamB: (amount: number) => void;
   resetPoints: () => void;
   renameTeamA: (renameValue: string) => void;
+  renameTeamB: (renameValue: string) => void;
+  isEditing: boolean;
+  setIsEditingTrue: () => void;
+  setIsEditingFalse: () => void;
 };
 export const useScoreStore = create<GameScore>()(
   persist(
@@ -32,6 +36,12 @@ export const useScoreStore = create<GameScore>()(
       renameTeamA(renameValue: string) {
         set(() => ({ teamAName: renameValue }));
       },
+      renameTeamB(renameValue: string) {
+        set(() => ({ teamBName: renameValue }));
+      },
+      isEditing: false,
+      setIsEditingTrue: () => set({ isEditing: true }),
+      setIsEditingFalse: () => set({ isEditing: false }),
     }),
     {
       name: "score-storage",

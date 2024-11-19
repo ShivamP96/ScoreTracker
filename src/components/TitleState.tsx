@@ -1,17 +1,28 @@
+import { useScoreStore } from "../hooks/useScore";
 import TitleViewEditing from "./TitleViewEditing";
 import TitleViewRegular from "./TitleViewRegular";
 
 export default function TitleState({
   title,
-  isEditing,
   renameTeam,
 }: {
   title: string;
-  isEditing: boolean;
   renameTeam: (renameValue: string) => void;
 }) {
-  if (isEditing) return <TitleViewEditing renameTeam={renameTeam} />;
+  const isEditing = useScoreStore((state) => state.isEditing);
+  const setIsEditingTrue = useScoreStore((state) => state.setIsEditingTrue);
+  const setIsEditingFalse = useScoreStore((state) => state.setIsEditingFalse);
+
+  if (isEditing)
+    return (
+      <TitleViewEditing
+        renameTeam={renameTeam}
+        setIsEditingFalse={setIsEditingFalse}
+      />
+    );
   else {
-    return <TitleViewRegular title={title} />;
+    return (
+      <TitleViewRegular title={title} setIsEditingTrue={setIsEditingTrue} />
+    );
   }
 }
