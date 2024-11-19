@@ -11,6 +11,7 @@ function App() {
   const teamBScore = useScoreStore((state) => state.teamBScore);
   const addPointTeamB = useScoreStore((state) => state.addPointTeamB);
   const subtractPointTeamB = useScoreStore((state) => state.subtractPointTeamB);
+  const renameTeamA = useScoreStore((state) => state.renameTeamA);
 
   return (
     <>
@@ -37,6 +38,7 @@ function App() {
                 teamScore={teamAScore}
                 addPoint={addPointTeamA}
                 subtractPoint={subtractPointTeamA}
+                renameTeam={renameTeamA}
               />
             </div>
             <div>

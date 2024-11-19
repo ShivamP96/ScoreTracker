@@ -6,17 +6,23 @@ export default function TeamACard({
   teamScore,
   addPoint,
   subtractPoint,
+  renameTeam,
 }: {
   title: string;
   teamScore: number;
   addPoint: (amount: number) => void;
   subtractPoint: (amount: number) => void;
+  renameTeam: (renameValue: string) => void;
 }) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   return (
     <section className="flex flex-col justify-start items-center">
       <div className="flex flex-row gap-2">
-        <TitleState title={title} isEditing={isEditing} />
+        <TitleState
+          title={title}
+          isEditing={isEditing}
+          renameTeam={renameTeam}
+        />
         <button type="button" onClick={() => setIsEditing(true)}></button>
       </div>
       <div className="flex flex-row gap-5">
