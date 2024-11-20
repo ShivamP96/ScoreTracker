@@ -1,11 +1,20 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
+type History = {
+  id: number;
+  teamA: string;
+  teamAScore: number;
+  teamB: string;
+  teamBScore: number;
+};
+
 type GameScore = {
   teamAScore: number;
   teamBScore: number;
   teamAName: string;
   teamBName: string;
+  gameHistory: History[];
   addPointTeamA: (amount: number) => void;
   addPointTeamB: (amount: number) => void;
   subtractPointTeamA: (amount: number) => void;
@@ -25,6 +34,7 @@ export const useScoreStore = create<GameScore>()(
       teamBScore: 0,
       teamAName: "Team A",
       teamBName: "Team B",
+      gameHistory: [],
       addPointTeamA: (amount: number) =>
         set((state) => ({ teamAScore: state.teamAScore + amount })),
       addPointTeamB: (amount: number) =>
