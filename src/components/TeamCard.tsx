@@ -1,12 +1,14 @@
 import TitleState from "./TitleState";
 
-export default function TeamACard({
+export default function TeamCard({
+  id,
   title,
   teamScore,
   addPoint,
   subtractPoint,
   renameTeam,
 }: {
+  id: string;
   title: string;
   teamScore: number;
   addPoint: (amount: number) => void;
@@ -16,7 +18,7 @@ export default function TeamACard({
   return (
     <section className="flex flex-col justify-start items-center">
       <div className="flex flex-row gap-2">
-        <TitleState title={title} renameTeam={renameTeam} />
+        <TitleState id={id} title={title} renameTeam={renameTeam} />
       </div>
       <div className="flex flex-row gap-5">
         <div>

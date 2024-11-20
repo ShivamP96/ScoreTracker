@@ -3,26 +3,18 @@ import TitleViewEditing from "./TitleViewEditing";
 import TitleViewRegular from "./TitleViewRegular";
 
 export default function TitleState({
+  id,
   title,
   renameTeam,
 }: {
+  id: string;
   title: string;
   renameTeam: (renameValue: string) => void;
 }) {
   const isEditing = useScoreStore((state) => state.isEditing);
-  const setIsEditingTrue = useScoreStore((state) => state.setIsEditingTrue);
-  const setIsEditingFalse = useScoreStore((state) => state.setIsEditingFalse);
 
-  if (isEditing)
-    return (
-      <TitleViewEditing
-        renameTeam={renameTeam}
-        setIsEditingFalse={setIsEditingFalse}
-      />
-    );
+  if (isEditing === id) return <TitleViewEditing renameTeam={renameTeam} />;
   else {
-    return (
-      <TitleViewRegular title={title} setIsEditingTrue={setIsEditingTrue} />
-    );
+    return <TitleViewRegular title={title} id={id} />;
   }
 }

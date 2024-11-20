@@ -36,6 +36,7 @@ function App() {
           >
             <div>
               <TeamCard
+                id={"A"}
                 title={teamAName}
                 teamScore={teamAScore}
                 addPoint={addPointTeamA}
@@ -45,6 +46,7 @@ function App() {
             </div>
             <div>
               <TeamCard
+                id={"B"}
                 title={teamBName}
                 teamScore={teamBScore}
                 addPoint={addPointTeamB}

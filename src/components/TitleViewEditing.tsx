@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { CheckIcon } from "./icons";
+import { useScoreStore } from "../hooks/useScore";
 
 export default function TitleViewEditing({
   renameTeam,
-  setIsEditingFalse,
 }: {
   renameTeam: (renameValue: string) => void;
-  setIsEditingFalse: () => void;
 }) {
   const [editName, setEditName] = useState("");
+  const emptyTeamName = useScoreStore((state) => state.setIsEditingTeamEmpty);
   function handleRenameTeam(renameValue: string) {
     renameTeam(renameValue);
-    setIsEditingFalse();
+    emptyTeamName();
   }
   return (
     <section className="flex flex-row items-center">
