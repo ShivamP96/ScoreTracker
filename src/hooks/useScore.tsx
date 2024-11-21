@@ -15,6 +15,8 @@ type GameScore = {
   teamAName: string;
   teamBName: string;
   gameHistory: History[];
+  gameId: number;
+  generateNextGameId: () => void;
   addPointTeamA: (amount: number) => void;
   addPointTeamB: (amount: number) => void;
   subtractPointTeamA: (amount: number) => void;
@@ -26,15 +28,18 @@ type GameScore = {
   setIsEditingTeamA: () => void;
   setIsEditingTeamB: () => void;
   setIsEditingTeamEmpty: () => void;
+  saveGameHistory: () => void;
+  deleteGameHistory: (id: number) => void;
 };
 export const useScoreStore = create<GameScore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       teamAScore: 0,
       teamBScore: 0,
       teamAName: "Team A",
       teamBName: "Team B",
       gameHistory: [],
+      gameId: 0,
       addPointTeamA: (amount: number) =>
         set((state) => ({ teamAScore: state.teamAScore + amount })),
       addPointTeamB: (amount: number) =>
@@ -54,6 +59,22 @@ export const useScoreStore = create<GameScore>()(
       setIsEditingTeamA: () => set({ isEditing: "A" }),
       setIsEditingTeamB: () => set({ isEditing: "B" }),
       setIsEditingTeamEmpty: () => set({ isEditing: "" }),
+      saveGameHistory() {
+        const gameEntry: History = {
+          id: get().gameId,
+          teamA: this.teamAName,
+          teamAScore: this.teamAScore,
+          teamB: this.teamBName,
+          teamBScore: this.teamBScore,
+        };
+        set((state) => ({ gameHistory: [...state.gameHistory, gameEntry] }));
+        this.generateNextGameId();
+      },
+      deleteGameHistory(id) {},
+      generateNextGameId: () => {
+        const nextId: number = get().gameId + 1;
+        set({ gameId: nextId });
+      },
     }),
     {
       name: "score-storage",
@@ -61,3 +82,6 @@ export const useScoreStore = create<GameScore>()(
     }
   )
 );
+function get() {
+  throw new Error("Function not implemented.");
+}
