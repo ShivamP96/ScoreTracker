@@ -20,7 +20,27 @@ export default function History({
           {gameHistory.map((game) => (
             <div className="flex flex-row items-center ">
               <li key={game.id}>
-                {`${game.teamA} (${game.teamAScore}) VS ${game.teamB} (${game.teamBScore})`}
+                {game.teamA} (
+                <span
+                  className={
+                    game.teamAScore > game.teamBScore
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }
+                >
+                  {game.teamAScore}
+                </span>
+                ) VS {game.teamB} (
+                <span
+                  className={
+                    game.teamBScore > game.teamAScore
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }
+                >
+                  {game.teamBScore}
+                </span>
+                )
               </li>
               <button
                 className=""
