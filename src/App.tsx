@@ -1,4 +1,5 @@
 import "./App.css";
+import History from "./components/History";
 import TeamCard from "./components/TeamCard";
 import { useScoreStore } from "./hooks/useScore";
 
@@ -14,6 +15,9 @@ function App() {
   const subtractPointTeamB = useScoreStore((state) => state.subtractPointTeamB);
   const renameTeamA = useScoreStore((state) => state.renameTeamA);
   const renameTeamB = useScoreStore((state) => state.renameTeamB);
+  const gameHistory = useScoreStore((state) => state.gameHistory);
+  const deleteGameHistory = useScoreStore((state) => state.deleteGameHistory);
+  const saveGameHistory = useScoreStore((state) => state.saveGameHistory);
 
   return (
     <>
@@ -23,10 +27,14 @@ function App() {
             <h1 className="text-6xl font-bold underline order-1">
               Score Tracker
             </h1>
-            <div className="order-1">
-              <button type="submit" onClick={() => resetPoints()}>
-                {" "}
+            <div className="order-1 py-4">
+              <button type="button" onClick={() => resetPoints()}>
                 Reset
+              </button>
+            </div>
+            <div className="order-2 py-8">
+              <button type="button" onClick={() => saveGameHistory()}>
+                Save
               </button>
             </div>
           </div>
@@ -54,6 +62,12 @@ function App() {
                 renameTeam={renameTeamB}
               />
             </div>
+          </div>
+          <div id="history" className="flex items-center my-auto">
+            <History
+              gameHistory={gameHistory}
+              deleteGameHistory={deleteGameHistory}
+            />
           </div>
         </section>
       </body>

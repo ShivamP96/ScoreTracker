@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-type History = {
+export type History = {
   id: number;
   teamA: string;
   teamAScore: number;
