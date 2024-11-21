@@ -62,18 +62,18 @@ export const useScoreStore = create<GameScore>()(
       saveGameHistory() {
         const gameEntry: History = {
           id: get().gameId,
-          teamA: this.teamAName,
-          teamAScore: this.teamAScore,
-          teamB: this.teamBName,
-          teamBScore: this.teamBScore,
+          teamA: get().teamAName,
+          teamAScore: get().teamAScore,
+          teamB: get().teamBName,
+          teamBScore: get().teamBScore,
         };
         set((state) => ({ gameHistory: [...state.gameHistory, gameEntry] }));
-        this.generateNextGameId();
+        get().generateNextGameId();
       },
       deleteGameHistory(id) {
         let gameFound: boolean = false;
-        for (let i = 0; i < this.gameHistory.length; i++) {
-          if (this.gameHistory[i].id == id) {
+        for (let i = 0; i < get().gameHistory.length; i++) {
+          if (get().gameHistory[i].id == id) {
             gameFound = true;
           }
         }
@@ -100,6 +100,3 @@ export const useScoreStore = create<GameScore>()(
     }
   )
 );
-function get() {
-  throw new Error("Function not implemented.");
-}

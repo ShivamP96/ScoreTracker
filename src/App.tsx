@@ -63,7 +63,7 @@ function App() {
               />
             </div>
           </div>
-          <div id="history" className="flex items-center my-auto">
+          <div id="history" className="flex flex-col items-center my-auto">
             <History
               gameHistory={gameHistory}
               deleteGameHistory={deleteGameHistory}
