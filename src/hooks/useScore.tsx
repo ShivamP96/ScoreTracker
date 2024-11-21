@@ -70,7 +70,21 @@ export const useScoreStore = create<GameScore>()(
         set((state) => ({ gameHistory: [...state.gameHistory, gameEntry] }));
         this.generateNextGameId();
       },
-      deleteGameHistory(id) {},
+      deleteGameHistory(id) {
+        let gameFound: boolean = false;
+        for (let i = 0; i < this.gameHistory.length; i++) {
+          if (this.gameHistory[i].id == id) {
+            gameFound = true;
+          }
+        }
+        if (gameFound) {
+          set((state) => ({
+            gameHistory: [
+              ...state.gameHistory.filter((game) => game.id !== id),
+            ],
+          }));
+        }
+      },
       generateNextGameId: () => {
         const nextId: number = get().gameId + 1;
         set({ gameId: nextId });
