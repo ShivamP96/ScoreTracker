@@ -12,7 +12,15 @@ export default function History({
       <div>
         <h1>Game History</h1>
       </div>
-      <div>{gameHistory.map((game) => {})}</div>
+      <div>
+        <ul>
+          {gameHistory.map((game) => (
+            <li key={game.id}>
+              {`${game.teamA} (${game.teamAScore}) VS ${game.teamB} (${game.teamBScore})`}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
