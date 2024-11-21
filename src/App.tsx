@@ -40,7 +40,7 @@ function App() {
           </div>
           <div
             id="cards"
-            className="flex flex-row justify-around items-center my-auto"
+            className="flex flex-col sm:flex-row justify-around items-center mt-20"
           >
             <div>
               <TeamCard

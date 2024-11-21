@@ -15,8 +15,9 @@ export default function TitleViewEditing({
   }
   return (
     <section className="flex flex-row items-center">
-      <div id="teamCardName" className="font-bold text-4xl p-8">
+      <div id="teamCardName" className="font-bold text-2xl p-1">
         <input
+          className="max-w-24"
           value={editName}
           onChange={(e) => setEditName(e.target.value)}
         ></input>
