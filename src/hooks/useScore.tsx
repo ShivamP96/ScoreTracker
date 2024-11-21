@@ -29,7 +29,7 @@ type GameScore = {
   setIsEditingTeamB: () => void;
   setIsEditingTeamEmpty: () => void;
   saveGameHistory: () => void;
-  deleteGameHistory: (id: number) => void;
+  deleteGameHistory: (id: number) => boolean;
 };
 export const useScoreStore = create<GameScore>()(
   persist(
@@ -83,6 +83,10 @@ export const useScoreStore = create<GameScore>()(
               ...state.gameHistory.filter((game) => game.id !== id),
             ],
           }));
+          return true;
+        } else {
+          console.warn(`Game with ID ${id} not found`);
+          return false;
         }
       },
       generateNextGameId: () => {
