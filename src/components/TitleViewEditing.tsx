@@ -15,14 +15,18 @@ export default function TitleViewEditing({
   }
   return (
     <section className="flex flex-row items-center">
-      <div id="teamCardName" className="font-bold text-2xl p-1">
+      <div id="teamCardName" className="font-bold text-3xl mb-3.5 mr-4">
         <input
-          className="max-w-24"
+          className="max-w-48 sm:max-w-lg border-2 border-indigo-500/50"
           value={editName}
           onChange={(e) => setEditName(e.target.value)}
         ></input>
       </div>
-      <button type="button" onClick={() => handleRenameTeam(editName)}>
+      <button
+        className="mb-3.5"
+        type="button"
+        onClick={() => handleRenameTeam(editName)}
+      >
         <CheckIcon className="w-5 h-5" />
       </button>
     </section>

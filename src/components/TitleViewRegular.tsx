@@ -19,11 +19,11 @@ export default function TitleViewRegular({
   }
   return (
     <section className="flex flex-row items-center">
-      <div id="teamCardName" className="font-bold text-4xl p-8">
+      <div id="teamCardName" className="font-bold text-3xl mb-3.5 mr-4">
         {title}
       </div>
       <button
-        className="inline-flex justify-self-end whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 shrink-0"
+        className="inline-flex justify-self-end whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 shrink-0 mb-3.5"
         type="button"
         onClick={() => handleEditingTeam(id)}
       >
