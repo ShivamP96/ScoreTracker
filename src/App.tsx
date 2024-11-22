@@ -23,24 +23,34 @@ function App() {
     <>
       <body className="w-dvh h-dvh">
         <section className="flex flex-col h-dvh">
-          <div className="flex flex-col order-none justify-center items-center">
-            <h1 className="text-6xl font-bold underline order-1">
+          <div className="flex flex-col order-none justify-center items-center w-full">
+            <h1 className="text-5xl font-bold underline order-1">
               Score Tracker
             </h1>
-            <div className="order-1 py-4">
-              <button type="button" onClick={() => resetPoints()}>
-                Reset
-              </button>
-            </div>
-            <div className="order-2 py-8">
-              <button type="button" onClick={() => saveGameHistory()}>
-                Save
-              </button>
+            <div className="flex flex-row justify-between order-1 w-full">
+              <div className="order-1 mt-4">
+                <button
+                  className="bg-red-500/75"
+                  type="button"
+                  onClick={() => resetPoints()}
+                >
+                  Reset
+                </button>
+              </div>
+              <div className="order-2 mt-4">
+                <button
+                  className="bg-sky-500/75"
+                  type="button"
+                  onClick={() => saveGameHistory()}
+                >
+                  Save
+                </button>
+              </div>
             </div>
           </div>
           <div
             id="cards"
-            className="flex flex-col sm:flex-row justify-around items-center mt-20"
+            className="flex flex-col sm:flex-row justify-around items-center mt-5"
           >
             <div>
               <TeamCard
@@ -52,7 +62,7 @@ function App() {
                 renameTeam={renameTeamA}
               />
             </div>
-            <div>
+            <div className="mt-8">
               <TeamCard
                 id={"B"}
                 title={teamBName}
@@ -63,7 +73,7 @@ function App() {
               />
             </div>
           </div>
-          <div id="history" className="flex flex-col items-center my-auto">
+          <div id="history" className="flex flex-col items-center mt-20">
             <History
               gameHistory={gameHistory}
               deleteGameHistory={deleteGameHistory}
